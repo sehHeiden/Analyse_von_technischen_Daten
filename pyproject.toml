@@ -1,0 +1,24 @@
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".tensorflowenv",
+    ".eggs",
+    ".git",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".pyenv",
+    ".venv"
+]
+include = ["pyproject.toml", "*.ipynb"]
+
+line-length = 120
+indent-width = 4
+target-version = "py311"
+
+lint.select = ["ALL"]
+lint.ignore = ["D203", "D212", "ISC001", "COM812",
+                "T201"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+lint.fixable = ["ALL"]
+lint.unfixable = []
