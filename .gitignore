@@ -1,0 +1,8 @@
+*.pdf
+*.html
+*.docx
+*.zip
+
+*.idea
+*.theia
+*libs
