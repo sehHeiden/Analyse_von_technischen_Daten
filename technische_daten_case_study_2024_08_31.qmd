@@ -6,6 +6,8 @@ number-sections: true
 toc-title: Inhaltsverzeichnis
 highlight-style: pygments
 bibliography: TechnischeDaten.bib
+biblio-style: chem-angew
+cite-method: biblatex
 format: 
   html: 
     code-fold: true
