@@ -7,3 +7,6 @@ pyserial==3.5
 pandas==2.2.2
 sqlalchemy==2.0.29
 matplotlib==3.8.4
+
+jupyter
+jupyter-cache

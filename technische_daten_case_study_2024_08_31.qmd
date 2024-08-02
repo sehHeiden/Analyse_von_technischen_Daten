@@ -3,7 +3,9 @@ title: "Technische Daten - Case Studie"
 author: "Sebastian Heiden, Daniel Hamacher"
 toc: true
 number-sections: true
+toc-title: Inhaltsverzeichnis
 highlight-style: pygments
+bibliography: TechnischeDaten.bib
 format: 
   html: 
     code-fold: true
@@ -16,15 +18,14 @@ format:
 jupyter: python3
 ---
 
--- TODO: TOC auf Deutsch
 
 # Hausarbeit Technische Daten
 
 ## Mit TCLab darstellbare Technische Prozesse
 
-Das TCLab ist ein System aus der Mikrokontroller-Board Arduino Leonardo R3 mit einer aufsteckbaren Erweiterungsplatine (shield). -- TODO: Quelle, Webseite
-Die Erweiterungsplatine verfügt über eine extra Strombuchse mit der jeweils zwei verbaute Heizelemente () und Temperatursensoren () versorbar. Eine LED zeigt den Betrieb der Thermoelement mit einem Leuchten ab.
-Gesteuert werden Heizemelemente und Temperatursensoren mithilfe des Arduinoboards. Mit einer Python-Bibleotkek () können die Messungen des Arduinoboards gesteuert werden. Die Daten werden über UART () über ein USB-Kabel übertragen, dass gleichzeitig das Arduinoboard mit Strom versorgt.
+Das TCLab ist ein System aus der Mikrokontroller-Board Arduino Leonardo R3 mit einer aufsteckbaren Erweiterungsplatine (shield) [@noauthor_temperature_nodate].
+Die Erweiterungsplatine verfügt über eine extra Strombuchse mit der jeweils zwei verbaute Heizelemente (TIP31C [@noauthor_tclab_nodate]) und Temperatursensoren (TMP36GZ [@noauthor_tclab_nodate-1]) versorbar. Eine LED zeigt den Betrieb der Thermoelement mit einem Leuchten ab.
+Gesteuert werden Heizemelemente und Temperatursensoren mithilfe des Arduinoboards. Mit einer Python-Bibleothek [@noauthor_tclab_nodate-2] können die Messungen des Arduinoboards gesteuert werden. Die Daten werden über Universal Asynchronous Receiver Transmitter(UART) über ein USB-Kabel übertragen, dass gleichzeitig das Arduinoboard mit Strom versorgt.
 
 
 ## Erklärung zum Messprinzip
@@ -47,4 +48,4 @@ Bandpass- und Bandstoppfilter lassen nur bestimmte Frequenzen durch, bzw. stoppe
 
 ## Anhang
 
--- TODO Quellenverzeichnis
+## Quellenverzeichnis
