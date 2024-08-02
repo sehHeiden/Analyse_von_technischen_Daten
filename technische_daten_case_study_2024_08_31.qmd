@@ -1,0 +1,50 @@
+---
+title: "Technische Daten - Case Studie"
+author: "Sebastian Heiden, Daniel Hamacher"
+toc: true
+number-sections: true
+highlight-style: pygments
+format: 
+  html: 
+    code-fold: true
+    html-math-method: katex
+  pdf: 
+    geometry: 
+      - top=30mm
+      - left=20mm
+  docx: default
+jupyter: python3
+---
+
+-- TODO: TOC auf Deutsch
+
+# Hausarbeit Technische Daten
+
+## Mit TCLab darstellbare Technische Prozesse
+
+Das TCLab ist ein System aus der Mikrokontroller-Board Arduino Leonardo R3 mit einer aufsteckbaren Erweiterungsplatine (shield). -- TODO: Quelle, Webseite
+Die Erweiterungsplatine verfügt über eine extra Strombuchse mit der jeweils zwei verbaute Heizelemente () und Temperatursensoren () versorbar. Eine LED zeigt den Betrieb der Thermoelement mit einem Leuchten ab.
+Gesteuert werden Heizemelemente und Temperatursensoren mithilfe des Arduinoboards. Mit einer Python-Bibleotkek () können die Messungen des Arduinoboards gesteuert werden. Die Daten werden über UART () über ein USB-Kabel übertragen, dass gleichzeitig das Arduinoboard mit Strom versorgt.
+
+
+## Erklärung zum Messprinzip
+
+Für ein Baugruppe aus Thermoelement und Temperatursensoren werden verschiedene Messreihen ausgeführt. Die Temperatur des Thermoelements wird mittels PWM () gesteuert. Für jede Messreihe wird mit verschiedenen Frequenzen um eine mittlere Heizleistungs die Leistung variieert. Das Darausfolgende Antwortsignal der Temperatur am Temperatursensoren wird gemessen.
+
+
+## Nutzung des TCLabs als Filter
+
+Die Schwingung der Temperatur folgt der Schwingung der Heizleistung mit einer Zeitverzögerung. Bei niedrigfreqenten Schwingungen folgt die Temperaturänderung. Mit zunehmenden Frequenzen nimmt die Amplitude ab. Dieser Verlauf entspricht einem Tiefpassfilter. Bei einem Tiefpassfilter werden die Signale mit einer tiefen Frequenz durchgelassen, während höhere Frequenzen gestoppt werden. 
+Bei einen Hochpassfilter werden Höherfrequente Signale durchgelassen und niedrigfreqenten Signale gestoppt. Dies ist auch mit dem TCLab darstellbar indem ein Synthetischen Signal erzeugt wird. Wenn mann die Antwort die Antwort am Temperatursensoren skaliert und vom originalen (TODO besseres Wort) Signal des Thermoelements abzieht, kehrt man das Antwortverhalten um.
+Es werden nun höhere Frequenzen durchgelassen und niedrige gestoppt.
+
+Bandpass- und Bandstoppfilter lassen nur bestimmte Frequenzen durch, bzw. stoppen diese. Man kann diese Filter erzeugen, indem man Tiefpassfilter und Hochpassfilter nacheinander anwendet.
+
+
+## Nutzung eines Feature Engineering Packages
+
+## Hauptkomponentenanalyse und Visualisierung
+
+## Anhang
+
+-- TODO Quellenverzeichnis
