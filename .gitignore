@@ -7,3 +7,4 @@
 *.theia
 *.jupyter_cache
 *libs
+*.png

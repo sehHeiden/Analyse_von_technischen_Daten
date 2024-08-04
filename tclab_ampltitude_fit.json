@@ -1,0 +1,37 @@
+[
+  {
+    "": "0",
+    "freq_Hz": "0.010",
+    "Amplitude_theta": "0.076001",
+    "phi": "3.480898",
+    "Amplitude_Q1": "2.0"
+  },
+  {
+    "": "1",
+    "freq_Hz": "0.007",
+    "Amplitude_theta": "0.160136",
+    "phi": "4.370238",
+    "Amplitude_Q1": "2.0"
+  },
+  {
+    "": "2",
+    "freq_Hz": "0.005",
+    "Amplitude_theta": "0.240695",
+    "phi": "4.451942",
+    "Amplitude_Q1": "2.0"
+  },
+  {
+    "": "3",
+    "freq_Hz": "0.003",
+    "Amplitude_theta": "0.396349",
+    "phi": "5.074155",
+    "Amplitude_Q1": "2.0"
+  },
+  {
+    "": "4",
+    "freq_Hz": "0.001",
+    "Amplitude_theta": "0.935073",
+    "phi": "5.567822",
+    "Amplitude_Q1": "2.0"
+  }
+]

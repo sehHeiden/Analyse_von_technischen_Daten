@@ -13,6 +13,7 @@ format:
     code-fold: true
     html-math-method: katex
   pdf: 
+    code-annotations: false
     geometry: 
       - top=30mm
       - left=20mm
@@ -25,9 +26,9 @@ jupyter: python3
 
 ## Mit TCLab darstellbare Technische Prozesse
 
-Das TCLab ist ein System aus der Mikrokontroller-Board Arduino Leonardo R3 mit einer aufsteckbaren Erweiterungsplatine (shield) [@noauthor_temperature_nodate].
+Das TCLab ist ein System aus der Mikrocontroller-Board Arduino Leonardo R3 mit einer aufsteckbaren Erweiterungsplatine (shield) [@noauthor_temperature_nodate].
 Die Erweiterungsplatine verfügt über eine extra Strombuchse mit der jeweils zwei verbaute Heizelemente (TIP31C [@noauthor_tclab_nodate]) und Temperatursensoren (TMP36GZ [@noauthor_tclab_nodate-1]) versorbar. Eine LED zeigt den Betrieb der Thermoelement mit einem Leuchten ab.
-Gesteuert werden Heizemelemente und Temperatursensoren mithilfe des Arduinoboards. Mit einer Python-Bibleothek [@noauthor_tclab_nodate-2] können die Messungen des Arduinoboards gesteuert werden. Die Daten werden über Universal Asynchronous Receiver Transmitter(UART) über ein USB-Kabel übertragen, dass gleichzeitig das Arduinoboard mit Strom versorgt.
+Gesteuert werden Heizemelemente und Temperatursensoren mithilfe des Arduinoboards. Mit einer Python-Bibliothek [@noauthor_tclab_nodate-2] können die Messungen des Arduinoboards gesteuert werden. Die Daten werden über Universal Asynchronous Receiver Transmitter(UART) über ein USB-Kabel übertragen, dass gleichzeitig das Arduinoboard mit Strom versorgt.
 
 
 ## Erklärung zum Messprinzip
@@ -37,8 +38,37 @@ Für ein Baugruppe aus Thermoelement und Temperatursensoren werden verschiedene 
 
 ## Nutzung des TCLabs als Filter
 
-Die Schwingung der Temperatur folgt der Schwingung der Heizleistung mit einer Zeitverzögerung. Bei niedrigfreqenten Schwingungen folgt die Temperaturänderung. Mit zunehmenden Frequenzen nimmt die Amplitude ab. Dieser Verlauf entspricht einem Tiefpassfilter. Bei einem Tiefpassfilter werden die Signale mit einer tiefen Frequenz durchgelassen, während höhere Frequenzen gestoppt werden. 
-Bei einen Hochpassfilter werden Höherfrequente Signale durchgelassen und niedrigfreqenten Signale gestoppt. Dies ist auch mit dem TCLab darstellbar indem ein Synthetischen Signal erzeugt wird. Wenn mann die Antwort die Antwort am Temperatursensoren skaliert und vom originalen (TODO besseres Wort) Signal des Thermoelements abzieht, kehrt man das Antwortverhalten um.
+Die Schwingung der Temperatur folgt der Schwingung der Heizleistung mit einer Zeitverzögerung. Bei niedrigfrequenten Schwingungen folgt die Temperaturänderung. Mit zunehmenden Frequenzen nimmt die Amplitude ab. Dieser Verlauf entspricht einem Tiefpassfilter (siehe @fig-fig-tclab-tiefpass). Bei einem Tiefpassfilter werden die Signale mit einer tiefen Frequenz durchgelassen, während höhere Frequenzen gestoppt werden.
+
+```{python}
+#| label: fig-tclab-tiefpass
+#| fig-cap: "TCLAB als Tiefpassfilter"
+#| echo: false
+
+import pandas as pd
+from matplotlib import pyplot as plt
+
+
+interpol_df = pd.read_json("tclab_ampltitude_fit.json")
+
+fig, axs = plt.subplots(1, 2, figsize=(20, 5))
+fig.suptitle("Filter auf Heizelemente")
+
+axs[0].set_title("Amplitude Temperatur", fontsize="x-large")
+axs[0].plot(interpol_df.freq_Hz, interpol_df.Amplitude_theta, "r+", label="Amplitude")
+axs[0].set_ylim(0, 2.1)
+axs[0].set_xscale("log")
+
+axs[1].set_title("Amplitude Heizelement", fontsize="x-large")
+axs[1].plot(interpol_df.freq_Hz, interpol_df.Amplitude_Q1, "g+", label="Heating [%]")
+axs[1].set_ylim(0, 2.1)
+axs[1].set_xscale("log")
+
+axs[0].set(xlabel="Hz [s-1]", ylabel="Amplitude [°C]")
+axs[1].set(xlabel="Hz [s-1]", ylabel="Amplitude [%]")
+```
+TODO(Sebastian): beide Graphen links, und Rechtshochpassfilter
+Bei einen Hochpassfilter werden Höherfrequente Signale durchgelassen und niedrigfrequenten Signale gestoppt. Dies ist auch mit dem TCLab darstellbar indem ein Synthetischen Signal erzeugt wird. Wenn mann die Antwort die Antwort am Temperatursensoren skaliert und vom originalen (TODO besseres Wort) Signal des Thermoelements abzieht, kehrt man das Antwortverhalten um.
 Es werden nun höhere Frequenzen durchgelassen und niedrige gestoppt.
 
 Bandpass- und Bandstoppfilter lassen nur bestimmte Frequenzen durch, bzw. stoppen diese. Man kann diese Filter erzeugen, indem man Tiefpassfilter und Hochpassfilter nacheinander anwendet.
